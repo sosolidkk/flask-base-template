@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, flash
 from app import app
 
 
@@ -9,6 +9,9 @@ def index():
 
 @app.route("/sign-in")
 def sign_in():
+    flash("Error login", "danger")
+    flash("Success login", "success")
+    flash("Notification login", "primary")
     return render_template("sign_in.html", title="Sign in page")
 
 

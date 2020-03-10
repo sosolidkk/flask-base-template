@@ -10,10 +10,10 @@
     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 mt-2 mb-2">
         <img src="http://via.placeholder.com/72" class="rounded" width="72" height="72" alt="Logo" title="Logo">
         <h2 class="mt-2 text-center">Sign in Form</h2>
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        {% for type, message in messages %}
+        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
             {{ message }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -44,7 +44,7 @@
                             <i class="fa fa-key"></i>
                         </div>
                     </div>
-                    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
                 </div>
             </div>
             <div class="form-check">
