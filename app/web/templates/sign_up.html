@@ -1,5 +1,87 @@
 {% extends "base.html" %}
 
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}"">
+{% endblock %}
+
 {% block body %}
-<h1>Sign up</h1>
+<div class=" container">
+<div class="row">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 mt-2 mb-2">
+        <img src="http://via.placeholder.com/72" class="rounded" width="72" height="72" alt="Logo" title="Logo">
+        <h2 class="mt-2 text-center">Sign up Form</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for type, message in messages %}
+        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form class="text-left">
+            <div class="form-group">
+                <label for="userInput">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-primary text-white">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="userInput" aria-describedby="userHelp"
+                        placeholder="Enter username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="userEmail">Email</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-primary text-white">
+                            @
+                        </div>
+                    </div>
+                    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-primary text-white">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordInputConfirmation">Confirm password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-primary text-white">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" id="passwordInputConfirmation"
+                        placeholder="Enter password again">
+                </div>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+        </form>
+    </div>
+</div>
+<footer class="text-center">
+    <small>&copy; Base template 2020-2020</small>
+</footer>
+</div>
+
 {% endblock %}
