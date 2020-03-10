@@ -1,27 +1,63 @@
 {% extends "base.html" %}
 
 {% block link %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}"">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}"">
 {% endblock %}
 
 {% block body %}
+<div class=" container">
+<div class="row">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 mt-2 mb-2">
+        <img src="http://via.placeholder.com/72" class="rounded" width="72" height="72" alt="Logo" title="Logo">
+        <h2 class="mt-2 text-center">Sign in Form</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
 
-<div class=" text-center">
-<form class="form-signin" novalidate>
-    <img class="mb-4" src="http://via.placeholder.com/72" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password">
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
+        <form class="text-left">
+            <div class="form-group">
+                <label for="userInput">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-primary text-white">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="userInput" aria-describedby="emailHelp"
+                        placeholder="Enter username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-primary text-white">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <small class="mt-6 text-muted">&copy; 2020-2020</small>
-</form>
+</div>
+<footer class="text-center">
+    <small>&copy; Base template 2020-2020</small>
+</footer>
 </div>
 
 {% endblock %}
