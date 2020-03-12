@@ -8,8 +8,7 @@
 <div class=" container">
 <div class="row">
     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 mt-2 mb-2">
-        <img src="http://via.placeholder.com/72" class="rounded" width="72" height="72" alt="Logo" title="Logo">
-        <h2 class="mt-2 text-center">Sign up Form</h2>
+        <img src="http://via.placeholder.com/96" class="rounded mb-2" width="96" height="96" alt="Logo" title="Logo">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for type, message in messages %}
@@ -23,59 +22,73 @@
         {% endif %}
         {% endwith %}
 
-        <form class="text-left">
+        <form action="" method="POST" class="text-left" novalidate>
+            {{ form.hidden_tag() }}
+
             <div class="form-group">
-                <label for="userInput">Username</label>
+                {{ form.username.label }}
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text bg-primary text-white">
-                            <i class="fa fa-user"></i>
-                        </div>
+                        <div class="input-group-text bg-primary text-white"><i class="fa fa-user"></i></div>
                     </div>
-                    <input type="text" class="form-control" id="userInput" aria-describedby="userHelp"
-                        placeholder="Enter username">
+                    {{ form.username(class="form-control", placeholder="Username", size=32) }}
                 </div>
+                {% for error in form.username.errors %}
+                <span class="badge badge-danger">{{ error }}</span>
+                {% endfor %}
             </div>
+
             <div class="form-group">
-                <label for="userEmail">Email</label>
+                {{ form.email.label }}
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text bg-primary text-white">
-                            @
-                        </div>
+                        <div class="input-group-text bg-primary text-white">@</div>
                     </div>
-                    <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
-                        placeholder="Enter email">
+                    {{ form.email(class="form-control", placeholder="Email", size=32) }}
                 </div>
+                {% for error in form.email.errors %}
+                <span class="badge badge-danger">{{ error }}</span>
+                {% endfor %}
             </div>
+
             <div class="form-group">
-                <label for="passwordInput">Password</label>
+                {{ form.password.label }}
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text bg-primary text-white">
-                            <i class="fa fa-key"></i>
-                        </div>
+                        <div class="input-group-text bg-primary text-white"><i class="fa fa-key"></i></div>
                     </div>
-                    <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
+                    {{ form.password(class="form-control", placeholder="Password", size=32) }}
                 </div>
+                {% for error in form.password.errors %}
+                <span class="badge badge-danger">{{ error }}</span>
+                {% endfor %}
             </div>
+
             <div class="form-group">
-                <label for="passwordInputConfirmation">Confirm password</label>
+                {{ form.password_confirmation.label }}
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text bg-primary text-white">
-                            <i class="fa fa-key"></i>
-                        </div>
+                        <div class="input-group-text bg-primary text-white"><i class="fa fa-key"></i></div>
                     </div>
-                    <input type="password" class="form-control" id="passwordInputConfirmation"
-                        placeholder="Enter password again">
+                    {{ form.password_confirmation(class="form-control", placeholder="Password confirmation", size=32) }}
                 </div>
+                {% for error in form.password_confirmation.errors %}
+                <span class="badge badge-danger">{{ error }}</span>
+                {% endfor %}
             </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="rememberMe">
-                <label class="form-check-label" for="rememberMe">Remember me</label>
+
+            <div class="form-group">
+                {{ form.user_role.label }}
+                {{ form.user_role(class="form-control", size=2) }}
+                {% for error in form.user_role.errors %}
+                <span class="badge badge-danger">{{ error }}</span>
+                {% endfor %}
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+
+            <div class="d-flex justify-content-center row">
+                {{ form.submit(class="btn btn-primary ml-2 mr-2 btn-block") }}
+                <a class="btn btn-primary ml-2 mr-2 btn-block" href="{{ url_for('index') }}" role="button">Back</a>
+            </div>
         </form>
     </div>
 </div>
