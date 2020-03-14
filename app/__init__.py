@@ -17,5 +17,6 @@ migrate = Migrate(app=app, db=db)
 
 login = LoginManager(app=app)
 login.login_view = "/sign-in"
+login.login_message_category = "primary"
 
 from app import routes
