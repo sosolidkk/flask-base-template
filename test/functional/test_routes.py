@@ -1,4 +1,10 @@
 def test_index_route(test_client):
+    """test_index_route
+    GIVEN a client app interface
+    WHEN a request is made
+    THEN check the page status code, and some core elements
+    """
+
     response = test_client.get("/")
 
     assert response.status_code == 200
@@ -8,6 +14,12 @@ def test_index_route(test_client):
 
 
 def test_signin_route(test_client):
+    """test_signin_route
+    GIVEN a client app interface
+    WHEN a request is made
+    THEN check the page status code, and some core elements
+    """
+
     response = test_client.get("/sign-in")
 
     assert response.status_code == 200
@@ -18,6 +30,12 @@ def test_signin_route(test_client):
 
 
 def test_signup_route(test_client):
+    """test_signup_route
+    GIVEN a client app interface
+    WHEN a request is made
+    THEN check the page status code, and some core elements
+    """
+
     response = test_client.get("/sign-up")
 
     assert response.status_code == 200

@@ -2,10 +2,10 @@ from app.models import User
 
 
 def test_new_user(user):
-    """
+    """test_new_user
     GIVEN a User model
     WHEN a new User is created
-    THEN check the email, hashed_password, authenticated, and role fields are defined correctly
+    THEN check if the username, email, password_hash, and role fields are defined correctly
     """
 
     assert user.username == "test_user"
