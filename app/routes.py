@@ -9,6 +9,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 
 @app.route("/", methods=["GET"])
+@app.route("/index", methods=["GET"])
 def index():
     return render_template("index.html", title="Index page")
 
