@@ -22,7 +22,8 @@ class SignInForm(FlaskForm):
 
 
 class SignUpForm(FlaskForm):
-    username = StringField("User", validators=[DataRequired(message="Required field")])
+    username = StringField("User", validators=[
+                           DataRequired(message="Required field")])
     email = StringField(
         "Email",
         validators=[
@@ -41,7 +42,7 @@ class SignUpForm(FlaskForm):
         ],
     )
     user_role = SelectField(
-        "Role", choices=[(0, "Admin"), (1, "User")], coerce=int, validators=[]
+        "Role", choices=[(0, "admin"), (1, "user")], coerce=int, validators=[]
     )
     submit = SubmitField("Sign up")
 
