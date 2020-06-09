@@ -14,7 +14,10 @@ __flask-base-template__ é só um ./start para evitar escrever um programa todo 
 
 1. `export FLASK_APP=run.py`
 2. `export FLASK_ENV=development`
-3. `flask run`
+3. `flask db init`
+4. `flask db migrate`
+5. `flask db upgrade`
+6. `flask run`
 
 ## Contribuindo
 
